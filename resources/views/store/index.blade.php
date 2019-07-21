@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>店家管理</title>
+</head>
+<body>
+<table style="width: 70%; margin-top:1em;">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>店名</th>
+        <th>描述</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach ($stores as $store)
+        <tr>
+            <td>{{ $store->id }}</td>
+            <td><a href="{{ route('store.show', $store->id) }}">{{ $store->name }}</a></td>
+            <td>{{ $store->desc }}</td>
+        </tr>
+    @endforeach
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+</body>
+</html>

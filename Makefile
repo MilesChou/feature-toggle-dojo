@@ -18,6 +18,8 @@ coverage: test
 
 up:
 	docker-compose up -d
+	php artisan migrate -v
+	php artisan db:seed
 
 down:
 	docker-compose down -v
