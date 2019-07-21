@@ -11,6 +11,7 @@
         <th>#</th>
         <th>店名</th>
         <th>描述</th>
+        <th>操作</th>
     </tr>
     </thead>
 
@@ -20,11 +21,13 @@
             <td>{{ $store->id }}</td>
             <td><a href="{{ route('store.show', $store->id) }}">{{ $store->name }}</a></td>
             <td>{{ $store->desc }}</td>
+            <td><a href="{{ route('store.edit', $store->id) }}">修改</a></td>
         </tr>
     @endforeach
     </tbody>
     <tfoot>
     </tfoot>
 </table>
+<a href="{{ route('store.create') }}">新增</a>
 </body>
 </html>

@@ -14,25 +14,17 @@ class StoreController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('store.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        /** @var Store $store */
+        $store = Store::create($request->only(['name', 'desc']));
+
+        return redirect()->route('store.show', $store->id);
     }
 
     public function show(Store $store)
@@ -42,27 +34,19 @@ class StoreController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Store $store
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Store $store)
     {
-        //
+        return view('store.edit', [
+            'store' => $store,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Store $store
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Store $store)
     {
-        //
+        $store->fill($request->only(['name', 'desc']));
+        $store->save();
+
+        return redirect()->route('store.index');
     }
 
     /**

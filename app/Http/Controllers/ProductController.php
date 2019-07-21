@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Store;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -17,25 +18,20 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('product.create', [
+            'store_id' => $request->query('store_id'),
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        /** @var Store $store */
+        $store = Store::find($request->query('store_id'));
+        $store->products()->create($request->only('name', 'price'));
+
+        return redirect()->route('store.show', $store->id);
     }
 
     /**
@@ -56,20 +52,12 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Product $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Product $product)
     {
         $product->fill($request->only(['name', 'price']));
         $product->save();
 
         return redirect()->route('store.show', $product->store->id);
-
     }
 
     /**

@@ -24,5 +24,6 @@
     <tfoot>
     </tfoot>
 </table>
+<a href="{{ route('product.create', ['store_id' => $store->id]) }}">新增產品</a>
 </body>
 </html>
