@@ -27,6 +27,8 @@
     </table>
     <input type="submit">
 </form>
-<a href="{{ route('store.index') }}">回首頁</a>
+@if ($toggle->isActive('is_show_home_on_product'))
+    <a href="{{ route('store.index') }}">回首頁</a>
+@endif
 </body>
 </html>

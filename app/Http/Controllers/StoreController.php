@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Store;
 use Illuminate\Http\Request;
+use MilesChou\Toggle\Toggle;
 
 class StoreController extends Controller
 {
-    public function index()
+    public function index(Toggle $toggle)
     {
         return view('store.index', [
             'stores' => Store::all(),
+            'toggle' => $toggle,
         ]);
     }
 
