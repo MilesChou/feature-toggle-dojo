@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use App\Store;
+use App\Product;
 use Illuminate\Http\Request;
-use MilesChou\Toggle\Toggle;
 
 class ProductController extends Controller
 {
@@ -46,11 +45,10 @@ class ProductController extends Controller
         //
     }
 
-    public function edit(Product $product, Toggle $toggle)
+    public function edit(Product $product)
     {
         return view('product.edit', [
             'product' => $product,
-            'toggle' => $toggle,
         ]);
     }
 
