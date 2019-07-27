@@ -26,5 +26,6 @@
     </table>
     <input type="submit">
 </form>
+<a href="{{ route('store.index') }}">回首頁</a>
 </body>
 </html>

@@ -47,4 +47,24 @@ class ProductControllerTest extends TestCase
             ->assertSee('excepted-name')
             ->assertSee('100');
     }
+
+    /**
+     * @test
+     */
+    public function shouldSeeHomeLink()
+    {
+        /** @var Store $store */
+        $store = Store::create(['name' => 'test', 'desc' => 'for test']);
+
+        /** @var Product $product */
+        $product = $store->products()->create(['name' => 'name', 'price' => 0]);
+
+        $this->get(route('product.create'))
+            ->assertStatus(200)
+            ->assertSee('回首頁');
+
+        $this->get(route('product.edit', $product->id))
+            ->assertStatus(200)
+            ->assertSee('回首頁');
+    }
 }

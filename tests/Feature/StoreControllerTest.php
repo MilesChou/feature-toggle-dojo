@@ -44,4 +44,28 @@ class StoreControllerTest extends TestCase
             ->assertSee('excepted-name')
             ->assertSee('excepted-desc');
     }
+
+    /**
+     * @test
+     */
+    public function shouldSeeHomeLink()
+    {
+        $store = Store::create(['name' => 'name', 'desc' => 'desc']);
+
+        $this->get(route('store.index'))
+            ->assertStatus(200)
+            ->assertSee('回首頁');
+
+        $this->get(route('store.create'))
+            ->assertStatus(200)
+            ->assertSee('回首頁');
+
+        $this->get(route('store.edit', $store->id))
+            ->assertStatus(200)
+            ->assertSee('回首頁');
+
+        $this->get(route('store.show', $store->id))
+            ->assertStatus(200)
+            ->assertSee('回首頁');
+    }
 }

@@ -29,5 +29,6 @@
     </tfoot>
 </table>
 <a href="{{ route('store.create') }}">新增</a>
+<a href="{{ route('store.index') }}">回首頁</a>
 </body>
 </html>
