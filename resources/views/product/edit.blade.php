@@ -27,5 +27,8 @@
     </table>
     <input type="submit">
 </form>
+@can ('is_show_home_on_product')
+    <a href="{{ route('store.index') }}">回首頁</a>
+@endcan
 </body>
 </html>

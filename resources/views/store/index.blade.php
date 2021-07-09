@@ -29,5 +29,8 @@
     </tfoot>
 </table>
 <a href="{{ route('store.create') }}">新增</a>
+@can ('is_show_home_on_home')
+    <a href="{{ route('store.index') }}">回首頁</a>
+@endcan
 </body>
 </html>
